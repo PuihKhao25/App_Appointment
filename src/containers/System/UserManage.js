@@ -3,13 +3,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserManage.scss';
 import { getAllUsers } from '../../services/userService'
+import ModalUser from './ModalUser';
 
 class UserManage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            arrUsers:[],
+            isOpenModalUser: false
         }
     }
 
@@ -24,13 +26,38 @@ class UserManage extends Component {
         }
         // console.log('get users from nodejs :' , response)
     }
+
+    handleAddNewUser = () =>{
+        // alert('click me')
+        this.setState({
+            isOpenModalUser: true,
+        })
+    }
+    toggleUserModal =() =>{
+        this.setState({
+            isOpenModalUser: !this.state.isOpenModalUser,
+        })
+    }
+
     render() {
         console.log('check render', this.state)
         let arrUsers = this.state.arrUsers;
 
         return (
             <div className="users-container">
+                <ModalUser 
+                    isOpen ={this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleUserModal}
+                    test={'abc'}
+                />
                 <div className='title text-center' >Manage User</div>
+                <div className='mx-2'>
+                    <button className='btn btn-primary px-3'
+                    onClick={()=> this.handleAddNewUser()}
+                    >
+                        <i className="fas fa-plus">
+                            </i>Add new user</button>
+                </div>
                 <div className='users-table mt-3 mx-2' >
 
                     <table id="customers">
