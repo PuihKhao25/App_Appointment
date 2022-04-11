@@ -42,7 +42,7 @@ class Login extends Component {
             }
             if(data && data.errCode === 0){
                 this.props.userLoginSuccess(data.user)
-                console.log('successOkay')
+                console.log('login successOkay')
             }
         } catch (error) {
             if(error.response){
@@ -52,7 +52,6 @@ class Login extends Component {
                     })
                 }
             }
-            console.log('hoiChiBan', error.response)
         }
 
     }
@@ -127,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
         // userLoginFail: () => dispatch(actions.adminLoginFail()),
-        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 
