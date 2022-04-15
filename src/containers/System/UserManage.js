@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService, deleteUserService,editUserService } from '../../services/userService'
+import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService'
 import ModalUser from './ModalUser';
 import ModalEditUser from './ModalEditUser';
 import { emitter } from '../../utils/emitter'
@@ -25,7 +25,7 @@ class UserManage extends Component {
     }
 
     getAllUsersFromReact = async () => {
-        let response = await getAllUsers('All');
+        let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users
@@ -78,27 +78,27 @@ class UserManage extends Component {
             console.log(e)
         }
     }
-    handleEditUser =  (user) => {
+    handleEditUser = (user) => {
         console.log('check edit user', user);
         this.setState({
             isOpenModalEditUser: true,
             userEdit: user
         })
     }
-    doEitUser = async(user) => {
+    doEitUser = async (user) => {
         try {
             let res = await editUserService(user);
-            if(res && res.errCode ===0){
+            if (res && res.errCode === 0) {
                 this.setState({
                     isOpenModalEditUser: false
                 })
-               await this.getAllUsersFromReact();
-            }else{
+                await this.getAllUsersFromReact();
+            } else {
                 alert(res.errCode)
             }
         } catch (e) {
             console.log(e)
-            
+
         }
         console.log('click save changes', user)
     }
@@ -146,6 +146,7 @@ class UserManage extends Component {
                         <tbody>
                             {
                                 arrUsers && arrUsers.map((item, index) => {
+                                    console.log('check'.arrUsers)
                                     return (
 
                                         < tr key={index} >
