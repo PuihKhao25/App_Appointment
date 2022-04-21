@@ -8,12 +8,13 @@ import MdEditor from 'react-markdown-editor-lite';
 // import style manually
 import 'react-markdown-editor-lite/lib/index.css';
 import Select from 'react-select';
+import { LANGUAGE } from '../../../utils';
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
+// const options = [
+//     { value: 'chocolate', label: 'Chocolate' },
+//     { value: 'strawberry', label: 'Strawberry' },
+//     { value: 'vanilla', label: 'Vanilla' },
+// ];
 
 // Initialize a markdown parser
 const mdParser = new MarkdownIt(/* Markdown-it options */);
@@ -27,26 +28,63 @@ class ManageDoctor extends Component {
             contentMarkdown: '',
             contentHTML: '',
             selectedDoctor: '',
-            description:''
+            description: '',
+            listDoctors: ''
         }
     }
 
     componentDidMount() {
+        this.props.fetchAllDoctors()
+    }
+
+    buildDataInputSelect = (inputData) => {
+        let result = [];
+        let { language } = this.props;
+        if (inputData && inputData.length > 0) {
+            inputData.map((item, index) => {
+                let object = {};
+                let labelVi = `${item.lastName} ${item.firstName}`
+                let labeEn = `${item.firstName} ${item.lastName} `
+                object.label = language === LANGUAGE.VI ? labelVi : labeEn;
+                object.value = item.id;
+                result.push(object)
+            })
+
+        }
+        return result;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.allDoctors !== this.props.allDoctors) {
+            let dataSelect = this.buildDataInputSelect(this.props.allDoctors)
+            this.setState({
+                listDoctors: dataSelect
+            })
+        }
+        if (prevProps.language !== this.props.language) {
+            let dataSelect = this.buildDataInputSelect(this.props.allDoctors)
+            this.setState({
+                listDoctors: dataSelect
+            })
+        }
 
     }
     // Finish!
-    handleEditorChange = ({ html, text }) =>{
+    handleEditorChange = ({ html, text }) => {
         this.setState({
             contentMarkdown: text,
-            contentHTML:html,
+            contentHTML: html,
         })
     }
 
     handleSaveContentMarkdown = () => {
-       console.log('check state content:',this.state)
+        this.props.saveDetailDoctor({
+            contentHTML: this.state.contentHTML,
+            contentMarkdown: this.state.contentMarkdown,
+            description: this.state.description,
+            doctorId: this.state.selectedDoctor.value
+        })
+
     }
     handleChange = (selectedDoctor) => {
         this.setState({ selectedDoctor }, () =>
@@ -55,11 +93,12 @@ class ManageDoctor extends Component {
     };
     handleOnChangeDescription = (event) => {
         this.setState({
-            description:event.target.value
+            description: event.target.value
         })
     }
 
     render() {
+        console.log('check all doctor:', this.state)
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
@@ -71,17 +110,17 @@ class ManageDoctor extends Component {
                         <Select
                             value={this.state.selectedDoctor}
                             onChange={this.handleChange}
-                            options={options}
+                            options={this.state.listDoctors}
                         />
                     </div>
                     <div className='content-right '>
                         <label>Thông tin giới thiệu</label>
-                        <textarea 
-                        className='form-control'
-                         rows='4'
-                         onChange={(event)=> this.handleOnChangeDescription(event)}
-                         value={this.state.description}
-                         >
+                        <textarea
+                            className='form-control'
+                            rows='4'
+                            onChange={(event) => this.handleOnChangeDescription(event)}
+                            value={this.state.description}
+                        >
                             fgfg
                         </textarea>
                     </div>
@@ -106,14 +145,15 @@ class ManageDoctor extends Component {
 
 const mapStateToProps = state => {
     return {
-        listUser: state.admin.users
+        language: state.app.language,
+        allDoctors: state.admin.allDoctors
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUsersRedux: () => dispatch(actions.fetchAllUsersStart()),
-        deleteUserRedux: (id) => dispatch(actions.deleteUser(id))
+        fetchAllDoctors: (id) => dispatch(actions.fetchAllDoctors()),
+        saveDetailDoctor: (data) => dispatch(actions.saveDetailDt(data))
     };
 };
 
