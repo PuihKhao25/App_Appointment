@@ -21,39 +21,45 @@ const deleteUserService = (userId) => {
     })
 }
 
-const editUserService =(inputData) => {
-    return axios.put('/api/edit-user',inputData)
+const editUserService = (inputData) => {
+    return axios.put('/api/edit-user', inputData)
 }
 
-const getAllCodeService =(inputType) => {
+const getAllCodeService = (inputType) => {
     return axios.get(`/api/allcode?type=${inputType}`)
 }
 
-const getTopDoctorHomeService = (limit) =>{
+const getTopDoctorHomeService = (limit) => {
     return axios.get(`/api/top-doctor-home?limit=${limit}`)
 }
 
-const getAllDoctors= () =>{
+const getAllDoctors = () => {
     return axios.get(`/api/get-all-doctors`)
 }
 
-const saveDetailDoctorServices =(data) =>{
+const saveDetailDoctorServices = (data) => {
     return axios.post('/api/save-infor-doctors', data)
 }
 
-const getDetailInfoDoctor = (inputId) =>{
+const getDetailInfoDoctor = (inputId) => {
     return axios.get(`/api/get-detail-doctor-id?id=${inputId}`)
 }
 
-export { 
+const saveBulkScheduleDoctor = (data) => {
+    return axios.post('api/bulk-create-schedule', data)
+}
+
+export {
     handleLoginApi,
-     getAllUsers, 
-     createNewUserService, 
-     deleteUserService,
-     editUserService,
-     getAllCodeService,
-     getTopDoctorHomeService,
-     getAllDoctors,
-     saveDetailDoctorServices,
-     getDetailInfoDoctor
-     }
+    getAllUsers,
+    createNewUserService,
+    deleteUserService,  
+    editUserService,
+    getAllCodeService,
+    getTopDoctorHomeService,
+    getAllDoctors,
+    saveDetailDoctorServices,
+    getDetailInfoDoctor,
+    saveBulkScheduleDoctor
+
+}
