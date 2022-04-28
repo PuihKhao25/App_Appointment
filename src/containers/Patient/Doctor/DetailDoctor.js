@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import Select from 'react-select';
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss'
 import { getDetailInfoDoctor } from '../../../services/userService'
 import { LANGUAGE } from '../../../utils';
+import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
 
@@ -15,8 +17,8 @@ class DetailDoctor extends Component {
     }
 
     async componentDidMount() {
-        if (this.props.match && this.props.match.params && this.props.match.params.id) {
-            let id = this.props.match.params.id;
+            if (this.props.match && this.props.match.params && this.props.match.params.id) {
+                let id = this.props.match.params.id;
             let res = await getDetailInfoDoctor(id)
             if (res && res.errCode === 0) {
                 this.setState({
@@ -68,7 +70,14 @@ class DetailDoctor extends Component {
                         </div>
                     </div>
                     <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule 
+                            doctorIdFromParent ={detailDoctor && detailDoctor.id ? detailDoctor.id:-1}
+                            />
+                        </div>
+                        <div className='content-right'>
 
+                        </div>
                     </div>
                     <div className='detail-intro-doctor'>
                         {detailDoctor && detailDoctor.Markdown 
