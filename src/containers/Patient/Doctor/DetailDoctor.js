@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
+import { FormattedMessage } from 'react-intl'
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss'
 import { getDetailInfoDoctor } from '../../../services/userService'
@@ -12,13 +13,17 @@ class DetailDoctor extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            detailDoctor: ''
+            detailDoctor: {},
+            currentDoctorId: -1
         }
     }
 
     async componentDidMount() {
             if (this.props.match && this.props.match.params && this.props.match.params.id) {
                 let id = this.props.match.params.id;
+                this.setState({
+                    currentDoctorId: id
+                })
             let res = await getDetailInfoDoctor(id)
             if (res && res.errCode === 0) {
                 this.setState({
@@ -72,7 +77,7 @@ class DetailDoctor extends Component {
                     <div className='schedule-doctor'>
                         <div className='content-left'>
                             <DoctorSchedule 
-                            doctorIdFromParent ={detailDoctor && detailDoctor.id ? detailDoctor.id:-1}
+                            doctorIdFromParent ={this.state.currentDoctorId}
                             />
                         </div>
                         <div className='content-right'>
