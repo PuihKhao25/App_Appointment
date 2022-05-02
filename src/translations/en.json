@@ -35,41 +35,50 @@
             "handbook": "Handbook",
             "manage-handbook": "Manage hanbook"
         },
-        "doctor":{
-            "manage-schedule":"Manage Dotor's schedule"
+        "doctor": {
+            "manage-schedule": "Manage Dotor's schedule"
         }
     },
     "manage-use": {
         "add": "Add new user",
-        "email":"Email",
+        "email": "Email",
         "password": "Password",
         "first-name": "First name",
         "last-name": "Last name",
         "phone-number": "Phone number",
         "address": "Address",
-        "gender":"Gender",
+        "gender": "Gender",
         "position": "Position",
         "role": "Role",
-        "image":"Avatar",
+        "image": "Avatar",
         "save": "Save user",
-        "edit":"Edit user"
+        "edit": "Edit user"
     },
     "homepage": {
-        "outstanding-doctor":"Last week's featured doctor",
-        "more-infor":"More infor"
+        "outstanding-doctor": "Last week's featured doctor",
+        "more-infor": "More infor"
     },
-    "manage-schedule":{
-        "title":"Manage Doctor's examination plan ",
-        "choose-doctor":"Choose doctor",
-        "choose-date":"Choose date",
+    "manage-schedule": {
+        "title": "Manage Doctor's examination plan ",
+        "choose-doctor": "Choose doctor",
+        "choose-date": "Choose date",
         "save": "Save infor"
     },
-    "patient":{
-        "detail-doctor":{
-            "schedule":"Schedule",
-            "no-schedule":"The doctor does not have an appointment during this time, please choose another time!",
-            "choose":"Choose ",
-            "book-free":" and book (free)"
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Schedule",
+            "no-schedule": "The doctor does not have an appointment during this time, please choose another time!",
+            "choose": "Choose ",
+            "book-free": " and book (free)"
+        }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "Create more doctor information",
+            "select-doctor": "Choose a doctor",
+            "intro": "Introduction ",
+            "add":"Create infor ",
+            "save":"Save infor "
         }
     }
 }
