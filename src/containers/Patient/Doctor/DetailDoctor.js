@@ -7,6 +7,7 @@ import './DetailDoctor.scss'
 import { getDetailInfoDoctor } from '../../../services/userService'
 import { LANGUAGE } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
+import DoctorExtraInfor from './DoctorExtraInfor';
 
 class DetailDoctor extends Component {
 
@@ -19,11 +20,11 @@ class DetailDoctor extends Component {
     }
 
     async componentDidMount() {
-            if (this.props.match && this.props.match.params && this.props.match.params.id) {
-                let id = this.props.match.params.id;
-                this.setState({
-                    currentDoctorId: id
-                })
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id;
+            this.setState({
+                currentDoctorId: id
+            })
             let res = await getDetailInfoDoctor(id)
             if (res && res.errCode === 0) {
                 this.setState({
@@ -41,12 +42,12 @@ class DetailDoctor extends Component {
 
     render() {
         console.log('check new data', this.state)
-        let {language} = this.props
+        let { language } = this.props
         let { detailDoctor } = this.state;
-        let nameVi ='', nameEn=''
-        if(detailDoctor && detailDoctor.positionData){
-             nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName}  ${detailDoctor.firstName} `;
-             nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName}  ${detailDoctor.lastName}`;
+        let nameVi = '', nameEn = ''
+        if (detailDoctor && detailDoctor.positionData) {
+            nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName}  ${detailDoctor.firstName} `;
+            nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName}  ${detailDoctor.lastName}`;
         }
         return (
             <>
@@ -61,7 +62,7 @@ class DetailDoctor extends Component {
                         </div>
                         <div className='content-right'>
                             <div className='up'>
-                                {language ===LANGUAGE.VI ? nameVi: nameEn}
+                                {language === LANGUAGE.VI ? nameVi : nameEn}
                             </div>
                             <div className='down'>
                                 {detailDoctor && detailDoctor.Markdown
@@ -76,22 +77,24 @@ class DetailDoctor extends Component {
                     </div>
                     <div className='schedule-doctor'>
                         <div className='content-left'>
-                            <DoctorSchedule 
-                            doctorIdFromParent ={this.state.currentDoctorId}
+                            <DoctorSchedule
+                                doctorIdFromParent={this.state.currentDoctorId}
                             />
                         </div>
                         <div className='content-right'>
-
+                            <DoctorExtraInfor
+                            doctorIdFromParent={this.state.currentDoctorId}
+                             />
                         </div>
                     </div>
                     <div className='detail-intro-doctor'>
-                        {detailDoctor && detailDoctor.Markdown 
-                        && detailDoctor.Markdown.contentHTML 
-                        &&
-                        <div dangerouslySetInnerHTML = {{__html: detailDoctor.Markdown.contentHTML}}>
-                            
-                        </div>
-                        } 
+                        {detailDoctor && detailDoctor.Markdown
+                            && detailDoctor.Markdown.contentHTML
+                            &&
+                            <div dangerouslySetInnerHTML={{ __html: detailDoctor.Markdown.contentHTML }}>
+
+                            </div>
+                        }
                     </div>
                     <div className='comment-doctor'>
 
