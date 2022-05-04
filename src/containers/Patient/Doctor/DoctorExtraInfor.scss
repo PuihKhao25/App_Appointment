@@ -23,10 +23,13 @@
 
     .content-down {
         .short-info{
-            span{
+            .detail{
                 cursor: pointer;
                 color: blueviolet;
             }  
+            .currency{
+                margin: 0 5px;
+            }
         }
         .title-price {
             margin-bottom: 10px;
