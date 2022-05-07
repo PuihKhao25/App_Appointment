@@ -5,7 +5,7 @@
     position: sticky;
     background-color: white;
     top: 0;
-    z-index: 10000;
+    z-index: 100;
 
     .home-header-content {
         width: 100%;
@@ -16,9 +16,11 @@
             width: 20%;
             display: flex;
             align-items: center;
-            h3{
-               margin-left: 10%;
+
+            h3 {
+                margin-left: 10%;
             }
+
             .header-logo {
                 height: 100%;
                 width: 100%;

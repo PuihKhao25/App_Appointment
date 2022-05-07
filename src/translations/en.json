@@ -71,12 +71,26 @@
             "choose": "Choose ",
             "book-free": " and book (free)"
         },
-        "extra-info-doctor":{
-            "text-address":"Address of examination",
-            "price":"Examination price: ",
-            "detail":"See details" ,
-            "payment":"The patient can pay the cost in the form of: ", 
-            "hide-price":"Hide price list"
+        "extra-info-doctor": {
+            "text-address": "Address of examination",
+            "price": "Examination price: ",
+            "detail": "See details",
+            "payment": "The patient can pay the cost in the form of: ",
+            "hide-price": "Hide price list"
+        },
+        "booking-modal": {
+            "title": "Information to book a medical appointment",
+            "full-name": "FullName",
+            "phone-number": "Phone number",
+            "email": "Email",
+            "address": "address",
+            "reason": "Reason",
+            "birthday": "Date of birthday",
+            "gender": "Gender",
+            "confirm": "Confirm",
+            "cancel":"Cancel",
+            "priceBooking":"Free booking",
+            "price":"Price: "
         }
     },
     "admin": {
@@ -84,14 +98,14 @@
             "title": "Create more doctor information",
             "select-doctor": "Choose a doctor",
             "intro": "Introduction ",
-            "add":"Create infor ",
-            "save":"Save infor ",
+            "add": "Create infor ",
+            "save": "Save infor ",
             "price": "Price ",
             "payment": "Payment",
             "province": "Province",
             "nameClinic": "Clinic's name",
-            "addressClinic":"Clinic's address",
-            "note":"Note"
+            "addressClinic": "Clinic's address",
+            "note": "Note"
         }
     }
 }
