@@ -27,9 +27,17 @@ class DoctorSchedule extends Component {
     async componentDidMount() {
         let { language } = this.props;
         let allDays = this.getArrayDays(language)
+        let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value)
+        if(this.props.doctorIdFromParent){
+                  this.setState({
+                allAvailableTime: res.data ? res.data : []
+            })  
+        }
+    
         this.setState({
             allDays: allDays,
         })
+        
     }
 
     capitalizeFirstLetter(string) {
