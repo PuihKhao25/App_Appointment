@@ -54,25 +54,33 @@
         height: 500px !important;
         border-top: 1px solid #f5f5f5;
         border-bottom: 1px solid #f5f5f5;
+       
     }
 
     .section-body {
-        .section-customize {
-          
+        .section-customize {     
             .bg-image {
                 height: 150px;
-                width: 278px;
+                width: 100%;
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-color: #eee;
+               
+               
+                
 
                 &.section-specialty {
-                    background-image: url('../../assets/specialty/co-xuong-khop.jpg');
+                    // background-image: url('../../assets/specialty/co-xuong-khop.jpg');
+                    width: 95%;
                 }
 
                 &.section-medical-facility {
-                    background-image: url('../../assets/medical-facility/benh-vien-cho-ray.jpg');
+                    width: 95%;
+        
+    
+                  
+                    // background-image: url('../../assets/medical-facility/benh-vien-cho-ray.jpg');
                 }
 
                 &.section-outStanding-doctor {
@@ -80,6 +88,8 @@
                     width: 120px;
                     height: 120px;
                     border-radius: 50%;
+                   
+                    
                 }
 
                 &.section-handbook {
@@ -98,6 +108,7 @@
 
 .section-share {
     height: 330px;
+    
 
     .section-container {
         margin: 0 180px;
@@ -142,7 +153,7 @@
     }
 
     .section-customize {
-        padding: 2px;
+        padding: 5px;
         cursor: pointer;
 
         .customer-boder {
