@@ -22,6 +22,22 @@
                 text-align: left;
                 padding: 8px;
               }
+              button {
+                  border: none;
+                  outline: none;
+                  cursor: pointer;
+              }
+              .mp-btn-confirm{
+                  margin-right: 10px;
+                  height: 30px;
+                  border-radius: 3px;
+                  background: orange;
+              }
+              .mp-btn-remedy{
+                height: 30px;
+                border-radius: 3px;
+                background: #39dca0;
+              }
               
         }
 
