@@ -11,7 +11,7 @@ class HandBook extends Component {
 
         return (
             <div className='section-share section-handbook'>
-                <div className='section-container'>
+                {/* <div className='section-container'>
                     <div className='section-header'>
                         <span className='title-section'>Cẩm mang</span>
                         <button className='btn-section'>Xem thêm</button>
@@ -45,7 +45,7 @@ class HandBook extends Component {
                         </Slider>
                     </div>
 
-                </div>
+                </div> */}
             </div>
         );
     }
